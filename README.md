@@ -28,12 +28,17 @@
 import queue
 
 s = queue.LifoQueue() # LifoQueue() 의 인자로 저장 데이터 수의 최대값을 줄 수 있다. 인자를 주지 않으면 메모리의 한계까지 수용한다.
+
 s.put("data1") # put() 메소드의 인자로 주어진 값을 해당 스택에 쌓는다.
 s.put("data2") # 하나 더 쌓는다.
+
 s.qsize() # >>2 qsize() 메소드는 현재 큐에 들어있는 데이터의 개수를 리턴한다.
+
 s.get() # >>"data2" 위에서부터 하나씩 꺼내서 리턴한다.
 s.get() # >>"data1" 하나 더 리턴한다.
 s.get() # 이 경우 큐 객체에서 꺼낼 데이터가 없으므로 None 이나 False를 리턴하거나 예외를 발생시킬 것으로 기대되지만 get() 메소드는 다를 쓰레드가 가지고 갈 때까지 무한 대기 상태가 된다고 한다.
+
 s.get_nowait() # 이렇게 get_nowait()메소드를 사용하면 더이상 객체에 꺼낼 데이터가 없을 때 바로 queue.Empty 예외를 발생시킨다.
+
 s.put_nowait("noMoreSpaceInStack") # 이 스택 객체는 생성할때 인자를 주지 않았으므로 객체가 꽉 찰 일은 거의 없겠으나, put_nowait()메소드 역시 만약 스택이 가득 찼다면 대기하지 않고 바로 queue.Full 예외를 발생시킨다.
 ```
